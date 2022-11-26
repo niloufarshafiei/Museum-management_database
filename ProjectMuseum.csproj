@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6A5F4CB1-6139-4C73-95A2-0702E1DB3639}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProjectMuseum</RootNamespace>
+    <AssemblyName>ProjectMuseum</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.37, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.37, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormArt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArt.Designer.cs">
+      <DependentUpon>FormArt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmployee_ContactS .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmployee_ContactS .Designer.cs">
+      <DependentUpon>FormEmployee_ContactS .cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormExpert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExpert.Designer.cs">
+      <DependentUpon>FormExpert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGuard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGuard.Designer.cs">
+      <DependentUpon>FormGuard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGuide.Designer.cs">
+      <DependentUpon>FormGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLineboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLineboard.Designer.cs">
+      <DependentUpon>FormLineboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManagingdirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManagingdirector.Designer.cs">
+      <DependentUpon>FormManagingdirector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenu.Designer.cs">
+      <DependentUpon>FormMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMuseum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMuseum.Designer.cs">
+      <DependentUpon>FormMuseum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMuseum_Contacts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMuseum_Contacts.Designer.cs">
+      <DependentUpon>FormMuseum_Contacts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmployee.Designer.cs">
+      <DependentUpon>FormEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOther.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOther.Designer.cs">
+      <DependentUpon>FormOther.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPainting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPainting.Designer.cs">
+      <DependentUpon>FormPainting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRelatives.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRelatives.Designer.cs">
+      <DependentUpon>FormRelatives.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSculpture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSculpture.Designer.cs">
+      <DependentUpon>FormSculpture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTechnicalProtection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTechnicalProtection.Designer.cs">
+      <DependentUpon>FormTechnicalProtection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTicket.Designer.cs">
+      <DependentUpon>FormTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTicketseller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTicketseller.Designer.cs">
+      <DependentUpon>FormTicketseller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTips.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTips.Designer.cs">
+      <DependentUpon>FormTips.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVisitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVisitor.Designer.cs">
+      <DependentUpon>FormVisitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormArt.resx">
+      <DependentUpon>FormArt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmployee_ContactS .resx">
+      <DependentUpon>FormEmployee_ContactS .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExpert.resx">
+      <DependentUpon>FormExpert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGuard.resx">
+      <DependentUpon>FormGuard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGuide.resx">
+      <DependentUpon>FormGuide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLineboard.resx">
+      <DependentUpon>FormLineboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManagingdirector.resx">
+      <DependentUpon>FormManagingdirector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenu.resx">
+      <DependentUpon>FormMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMuseum.resx">
+      <DependentUpon>FormMuseum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMuseum_Contacts.resx">
+      <DependentUpon>FormMuseum_Contacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmployee.resx">
+      <DependentUpon>FormEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOther.resx">
+      <DependentUpon>FormOther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPainting.resx">
+      <DependentUpon>FormPainting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRelatives.resx">
+      <DependentUpon>FormRelatives.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSculpture.resx">
+      <DependentUpon>FormSculpture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTechnicalProtection.resx">
+      <DependentUpon>FormTechnicalProtection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTicket.resx">
+      <DependentUpon>FormTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTicketseller.resx">
+      <DependentUpon>FormTicketseller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTips.resx">
+      <DependentUpon>FormTips.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVisitor.resx">
+      <DependentUpon>FormVisitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

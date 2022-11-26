@@ -1,0 +1,2059 @@
+CREATE TABLE Museum (
+	Museum_Name VARCHAR ( 30 ),
+	Number_Branch INT,
+	Date_Establishment NVARCHAR(10),
+	Museum_City VARCHAR ( 30 ),
+	Museum_Street VARCHAR ( 30 ),
+	Start_Working_Hours TIME,
+	End_Working_Hours TIME,
+	PRIMARY KEY ( Number_Branch ) 
+);
+INSERT INTO Museum ( Museum_Name, Number_Branch, Date_Establishment, Museum_City, Museum_Street, Start_Working_Hours, End_Working_Hours )
+VALUES( 'خانه هنرمندان ایران', 1, '1998/04/22', 'تهران', 'خیابان امام خمینی', '9:00:00', '19:00:00' );
+
+INSERT INTO Museum ( Museum_Name, Number_Branch, Date_Establishment, Museum_City, Museum_Street, Start_Working_Hours, End_Working_Hours )
+VALUES( 'خانه هنرمندان ایران', 2, '2011/06/27', 'تهران', 'خیابان استانبول', '9:00:00', '20:00:00' );
+
+INSERT INTO Museum ( Museum_Name, Number_Branch, Date_Establishment, Museum_City, Museum_Street, Start_Working_Hours, End_Working_Hours )
+VALUES( 'خانه هنرمندان ایران', 3, '2007/07/03', 'قم', 'خیابان ارم', '8:00:00', '16:00:00' );
+
+
+CREATE TABLE Museum_Contacts (
+	Museum_Contact VARCHAR ( 50 ) CHECK (
+		Museum_Contact LIKE '021[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' 
+		OR Museum_Contact LIKE '0253[0-9][0-9][0-9][0-9][0-9][0-9][0-9]' 
+		OR Museum_Contact LIKE '09[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]%' 
+	OR ( Museum_Contact LIKE '%@%' AND Museum_Contact LIKE '%.com' )),
+	Number_Branch INT NOT NULL,
+	PRIMARY KEY ( Museum_Contact, Number_Branch ),
+	FOREIGN KEY ( Number_Branch ) REFERENCES Museum ON DELETE CASCADE ON UPDATE CASCADE 
+);
+INSERT INTO Museum_Contacts ( Museum_Contact, Number_Branch )
+VALUES( '02122543412', 1 );
+
+INSERT INTO Museum_Contacts ( Museum_Contact, Number_Branch )
+VALUES( '02137279502', 2 );
+
+INSERT INTO Museum_Contacts ( Museum_Contact, Number_Branch )
+VALUES( '02122543152', 1 );
+
+INSERT INTO Museum_Contacts ( Museum_Contact, Number_Branch )
+VALUES( '02537831381', 3 );
+
+INSERT INTO Museum_Contacts ( Museum_Contact, Number_Branch )
+VALUES( 'Honarmandan@gmail.com', 1 );
+
+INSERT INTO Museum_Contacts ( Museum_Contact, Number_Branch )
+VALUES( '02137279508', 2 );
+
+INSERT INTO Museum_Contacts ( Museum_Contact, Number_Branch )
+VALUES( 'Honar.Moaser@gmail.com', 2 );
+
+INSERT INTO Museum_Contacts ( Museum_Contact, Number_Branch )
+VALUES( '02537831383', 3 );
+
+INSERT INTO Museum_Contacts ( Museum_Contact, Number_Branch )
+VALUES( 'DniHonar22@gmail.com', 3 );
+	
+
+CREATE TABLE Employee (
+	Personal_Code CHAR ( 5 ),
+	Natinal_Code CHAR ( 10 ) NOT NULL,
+	F_Name VARCHAR ( 20 ),
+	L_Name VARCHAR ( 20 ),
+	Sex VARCHAR ( 3 ),
+	Employee_City VARCHAR ( 30 ),
+	Employee_Street VARCHAR ( 30 ),
+	Position VARCHAR ( 20 ),
+	Birth_Date NVARCHAR(10),
+	Date_join NVARCHAR(10),
+	Insurance VARCHAR ( 20 ),
+	Number_Branch INT NOT NULL,
+	PRIMARY KEY ( Personal_Code ),
+	FOREIGN KEY ( Number_Branch )  REFERENCES Museum
+);
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '20150', '0022634876', 'علی', 'مراد خانی', 'مرد', 'تهران', 'خیابان نیروی هوایی', 'مدیرعامل', '1963/11/26', '2001/07/26', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '30100', '0075395144', 'پریا', 'انصاری', 'زن', 'تهران', 'خیابان مفتح', 'کارشناس', '1938/12/04', '1941/04/02', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '30101', '0033361207', 'مروارید', 'جاویدی', 'زن', 'تهران', 'خیابان پیروزی', 'کارشناس', '1942/05/03', '1947/07/05', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '30102', '0098715620', 'پویا', 'عابدی', 'مرد', 'تهران', 'خیابان بهار', 'کارشناس', '1941/05/03', '2008/04/22', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '30103', '0030105746', 'بهرام ', 'راد', 'مرد', 'تهران', 'خیابان جردن', 'کارشناس', '1950/04/02', '1944/11/04', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40100', '0031425601', 'پانیذ', 'کبیری', 'زن', 'تهران', 'خیابان شمیران', 'راهنما', '1943/04/03', '1952/08/04', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40101', '0071105048', 'حنانه', 'رنجی', 'زن', 'تهران', 'خیابان بهارستان', 'راهنما', '1935/01/03', '1940/09/04', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40102', '0096314720', 'جواد', 'نثاری', 'مرد', 'تهران', 'خیابان منیریه', 'راهنما', '1949/01/03', '2018/09/29', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40103', '0097401973', 'سعید', 'سعیدی', 'مرد', 'تهران', 'خیابان شیرازی', 'راهنما', '1986/07/26', '1944/09/04', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40104', '0016392470', 'مریم', 'رضوی', 'زن', 'تهران', 'خیابان همت', 'راهنما', '1994/11/30', '2017/10/30', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50100', '0070116455', 'ثنا', 'صابری', 'زن', 'تهران', 'خیابان امیری', 'بلیط فروش', '1999/10/27', '2021/04/22', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50101', '0039392143', 'حامد', 'رسولی', 'مرد', 'تهران', 'خیابان انقلاب', 'بلیط فروش', '1939/01/03', '2007/12/24', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50102', '0021611301', 'دنیا', 'تقوی', 'مرد', 'تهران', 'خیابان طالقانی', 'بلیط فروش', '1980/12/24', '1940/06/03', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50103', '0070308192', 'سما', 'حسینی', 'زن', 'تهران', 'خیابان  فردوسی', 'بلیط فروش', '1951/12/05', '1931/11/05', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50104', '0021371924', 'صابر', 'صابری', 'مرد', 'تهران', 'خیابان گاندی', 'بلیط فروش', '1945/08/04', '1937/03/04', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60100', '0021103067', 'امیرمحمد', 'نوروزی', 'مرد', 'تهران', 'خیابان انقلاب', 'نگهبان', '1976/10/25', '1932/02/03', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60101', '0071421371', 'امیرعلی', 'محمدی', 'مرد', 'تهران', 'خیابان امام خمینی', 'نگهبان', '1999/02/21', '2016/07/26', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60102', '0084123846', 'اکبر', 'مرادی', 'مرد', 'تهران', 'خیابان امیریه', 'نگهبان', '1947/12/05', '2021/12/24', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60103', '0062448631', 'داوود', 'اقبال', 'مرد', 'تهران', 'خیابان پیروزی', 'نگهبان', '1971/12/24', '1998/06/25', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60104', '0087123645', 'جواد', 'احدزاده', 'مرد', 'تهران', 'خیابان بهشتی', 'نگهبان', '1934/01/03', '1940/10/05', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60105', '0030104550', 'روح الله', 'نائینی', 'مرد', 'تهران', 'خیابان باقری', 'نگهبان', '1944/09/04', '2020/05/27', 'پارسیان', 1 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '20160', '0087236415', 'مرتضی ', 'ادیب زاده', 'مرد', 'قم', 'خیابان ولیعصر', 'مدیرعامل', '1943/09/05', '2016/11/22', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '30104', '0068427377', 'یسنا', 'صادقی', 'زن', 'قم', 'خیابان آوینی', 'کارشناس', '1980/10/27', '2021/4/25', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '30105', '0011421353', 'رضا', 'مرادی', 'مرد', 'قم', 'خیابان ولیعصر', 'کارشناس', '1987/11/23', '2021/1/21', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40105', '0036418921', 'ملیکا', 'خاکی فیروز', 'زن', 'قم', 'خیابان طالقانی', 'راهنما', '1980/4/26', '2020/12/26', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40106', '0060431064', 'امیر', 'رضایی', 'مرد', 'قم', 'خیابان صدوق', 'راهنما', '1935/7/5', '2012/3/21', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40107', '0069471523', 'زهرا', 'ایل خانی', 'زن', 'قم', 'خیابان هفت تیر', 'راهنما', '1949/04/12', '2019/02/25', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40108', '0089412581', 'علیرضا', 'غلامی', 'مرد', 'قم', 'خیابان نیایش', 'راهنما', '1949/01/03', '2019/12/4', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50105', '0097814520', 'الهام ', 'شعبانی', 'زن', 'قم', 'خیابان خیام', 'بلیط فروش', '1993/06/22', '2019/10/27', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50106', '0036402584', 'مجید', 'ایلانلو', 'مرد', 'قم', 'خیابان آذر', 'بلیط فروش', '1995/02/20', '1932/11/04', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50107', '0023519154', 'سپیده', 'اکرمی', 'زن', 'قم', 'خیابان باجک', 'بلیط فروش', '1948/08/04', '1937/12/04', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50108', '0044891003', 'اصغر', 'احدی', 'مرد', 'قم', 'خیابان امام حسین', 'بلیط فروش', '1951/01/03', '1938/03/04', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50109', '0019041932', 'الهه', 'صادق زاده', 'زن', 'قم', 'خیابان جمهوری', 'بلیط فروش', '2000/10/22', '1951/07/06', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60106', '0071421371', 'امیرعلی', 'محمدی', 'مرد', 'قم', 'خیابان امام خمینی', 'نگهبان', '1999/02/21', '2016/07/26', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60107', '0066421664', 'محمد', 'احمدی', 'مرد', 'قم', 'خیابان امینی', 'نگهبان', '1986/10/01', '1948/01/04', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60108', '0070421370', 'فاطمه', 'کاظمی', 'زن', 'قم', 'خیابان نیایش', 'نگهبان', '1940/10/05', '2011/07/27', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60109', '0064426464', 'امیرحسین', 'جعفری', 'مرد', 'قم', 'خیابان صفاییه', 'نگهبان', '1944/07/04', '1940/11/04', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60110', '0088411864', 'ابوالفضل', 'حیدری', 'مرد', 'قم', 'خیابان غدیر', 'نگهبان', '1932/07/04', '1936/01/04', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60111', '0088421864', 'علی', 'کریمی', 'مرد', 'قم', 'خیابان رفیعی', 'نگهبان', '1941/08/04', '1937/12/04', 'دی', 3 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '20170', '0098123632', 'علی', 'رفیعی', 'مرد', 'تهران', 'خیابان امام رضا ', 'مدیرعامل', '1952/03/04', '2020/11/29', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '30106', '0098715620', 'پویا', 'عابدی', 'مرد', 'تهران', 'خیابان بهار', 'کارشناس', '1941/05/03', '2011/05/23', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '30107', '0074421317', 'زهرا', 'حسینی', 'زن', 'تهران', 'خیابان مطهری', 'کارشناس', '1988/02/22', '1934/10/05', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '30108', '0075395144', 'پریا', 'انصاری', 'زن', 'تهران', 'خیابان مفتح', 'کارشناس', '1938/12/04', '1941/04/02', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40109', '0047153691', 'آیدا', 'مرحمی', 'زن', 'تهران', 'خیابان دانش', 'راهنما', '1949/08/04', '2011/12/27', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40110', '0058442564', 'زینب', 'موسوی', 'زن', 'تهران', 'خیابان گلستان', 'راهنما', '1989/10/27', '2016/05/26', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40111', '0080413607', 'مسعود', 'مختاری', 'مرد', 'تهران', 'خیابان سنایی', 'راهنما', '1990/01/27', '1932/01/04', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '40112', '0097152143', 'ارسلان', 'شهبازی', 'مرد', 'تهران', 'خیابان هفده شهریور', 'راهنما', '1940/07/04', '1933/09/04', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50110', '0049049877', 'مهدی', 'نکویی', 'مرد', 'تهران', 'خیابان امام رضا', 'بلیط فروش', '1935/07/05', '1952/04/02', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50111', '0010398433', 'نیایش', 'حسنی', 'زن', 'تهران', 'خیابان فردوسی', 'بلیط فروش', '1934/03/04', '1937/08/04', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50112', '0022410490', 'کریم', 'نصیری', 'مرد', 'تهران', 'خیابان طبرسی', 'بلیط فروش', '1947/09/05', '1948/12/04', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '50113', '0097980314', 'ثریا', 'عرب', 'زن', 'تهران', 'خیابان کوهسنگی', 'بلیط فروش', '1936/09/04', '1941/01/03', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60112', '0097143563', 'رضا', 'مردانی', 'مرد', 'تهران', 'خیابان بهشتی', 'نگهبان', '1954/12/30', '2012/09/23', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60113', '0068421364', 'جعفر', 'نیمایی', 'مرد', 'تهران', 'خیابان محتشمی', 'نگهبان', '1945/09/04', '2012/09/26', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60114', '0093271462', 'احمد', 'ذولفقاری', 'مرد', 'تهران', 'خیابان علیمردانی', 'نگهبان', '1963/10/25', '1933/05/03', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60115', '0031426574', 'محمد', 'آذری', 'مرد', 'تهران', 'خیابان بزرگمهر', 'نگهبان', '1941/06/03', '1937/12/04', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60116', '0011883461', 'محمد امین', 'داوودی', 'مرد', 'تهران', 'خیابان ابن سینا', 'نگهبان', '1933/07/04', '1931/11/05', 'پارسیان', 2 );
+
+INSERT INTO Employee ( Personal_Code, Natinal_Code, F_Name, L_Name, Sex, Employee_City, Employee_Street, Position, Birth_Date, Date_join, Insurance, Number_Branch )
+VALUES( '60117', '0078263410', 'احمد رضا', 'امامی', 'مرد', 'تهران', 'خیابان امام حسین', 'نگهبان', '1938/08/04', '1942/06/03', 'پارسیان', 2 );
+	
+
+CREATE TABLE Employee_ContactS (
+	Employee_Contact VARCHAR ( 50 ) CHECK (
+		Employee_Contact LIKE '021[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' 
+		OR Employee_Contact LIKE '0253[0-9][0-9][0-9][0-9][0-9][0-9][0-9]' 
+		OR Employee_Contact LIKE '09[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]%' 
+	OR ( Employee_Contact LIKE '%@%' AND Employee_Contact LIKE '%.com' )),
+	Personal_Code CHAR ( 5 ) NOT NULL,
+	PRIMARY KEY ( Employee_Contact, Personal_Code ),
+	FOREIGN KEY ( Personal_Code ) REFERENCES Employee ON DELETE CASCADE ON UPDATE CASCADE 
+);
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( 'AliMoradkhani150@gmail.com', '20150' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02167754367', '20150' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02144596319', '30100' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02153649520', '30101' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02137715684', '30102' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02176304879', '30103' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02163754861', '40100' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02156429115', '40101' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02136534598', '40102' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02136494513', '40103' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02169436515', '40104' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02122936019', '50100' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02177940627', '50101' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02166476353', '50102' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02166925510', '50103' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02144528384', '50104' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02177539684', '60100' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02188263430', '60101' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02188948700', '60102' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02133357272', '60103' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02122041654', '60104' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02166461721', '60105' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( 'MortezaAdibzade160@gmail.com', '20160' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02538252017', '20160' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02538097575', '30104' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02532775884', '30105' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02538064398', '40105' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02538086239', '40106' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02538719568', '40107' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02536000424', '40108' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02538782904', '50105' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02537107291', '50106' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02538970394', '50107' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02536405238', '50108' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02532974220', '50109' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02534320607', '60106' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02537904060', '60107' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02534640098', '60108' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02534080074', '60109' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02534127704', '60110' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02534800004', '60111' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( 'AliRafiei170@gmail.com', '20170' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02166919323', '20170' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02166507862', '30106' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02188608820', '30107' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02177884830', '30108' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02166556076', '40109' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02133500091', '40110' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02155188812', '40111' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02155333315', '40112' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02144240909', '50110' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02156317963', '50111' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02122647129', '50112' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02188209853', '50113' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02122130221', '60112' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02122022323', '60113' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02155747730', '60114' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02155904030', '60115' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02166893805', '60116' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '02136521489', '60117' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09122940155', '20150' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09372802500', '30100' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09359428205', '30101' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183686656', '30102' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188639045', '30103' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183610772', '40100' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09121562048', '40101' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183885700', '40102' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183622970', '40103' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09181611502', '40104' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09181622102', '50100' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09366924680', '50101' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09128558363', '50102' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188628204', '50103' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09120235473', '50104' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183663230', '60100' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09122566647', '60101' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09185251127', '60102' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188623919', '60103' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188629216', '60104' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188620516', '60105' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09390828200', '20160' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188614891', '30104' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09186440274', '30105' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09120540160', '40105' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09124550786', '40106' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09184341086', '40107' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188647858', '40108' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09189583070', '50105' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183613709', '50106' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183686675', '50107' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09338739729', '50108' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09186411545', '50109' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183670900', '60106' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183637498', '60107' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09187610103', '60108' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09363519353', '60109' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188635471', '60110' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188631953', '60111' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09123552142', '20170' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188631525', '30106' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183480957', '30107' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183615324', '30108' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09126599377', '40109' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09188637864', '40110' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09122561815', '40111' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09125593576', '40112' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09121551621', '50110' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09189604207', '50111' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09189640589', '50112' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09124359814', '50113' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09182421662', '60112' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09354650285', '60113' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09125581690', '60114' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09185264672', '60115' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09121853698', '60116' );
+
+INSERT INTO Employee_ContactS ( Employee_Contact, Personal_Code )
+VALUES( '09183156056', '60117' );
+	
+
+CREATE TABLE Guide (
+	Personal_Code CHAR ( 5 ),
+	Education VARCHAR ( 20 ),
+	Salary_Guide AS (((Working_Hours_Guide * 30 ) - Delaytime_Guide ) * 25000 ),
+	Working_Hours_Guide INT,
+	Delaytime_Guide FLOAT,
+	PRIMARY KEY ( Personal_Code ),
+	FOREIGN KEY ( Personal_Code ) REFERENCES Employee ON DELETE CASCADE ON UPDATE CASCADE 
+);
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40100', 'فوق لیسانس', 10, 0 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40101', 'فوق لیسانس', 10, 0 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40102', 'دکترا', 10, 1 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40103', 'لیسانس', 10, 1.5 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40104', 'لیسانس', 10, 3 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40105', 'فوق لیسانس', 8, 0 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40106', 'لیسانس', 8, 0 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40107', 'لیسانس', 8, 0.5 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40108', 'لیسانس', 8, 0 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40109', 'لیسانس', 11, 0 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40110', 'فوق لیسانس', 11, 1 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40111', 'لیسانس', 11, 1 );
+
+INSERT INTO Guide ( Personal_Code, Education, Working_Hours_Guide, Delaytime_Guide )
+VALUES( '40112', 'دکترا', 11, 2 );
+
+
+CREATE TABLE Responsible_for_Tickect_sales (
+	Personal_Code CHAR ( 5 ),
+	Room_Number INT,
+	Salary_Responsible AS ((((Working_Hours_Responsible * 30) - Delaytime_Responsible ) + Overtime_Responsible ) * 20000 ) ,
+	Working_Hours_Responsible INT,
+	Overtime_Responsible FLOAT,
+	Delaytime_Responsible FLOAT,
+	PRIMARY KEY ( Personal_Code ),
+	FOREIGN KEY ( Personal_Code ) REFERENCES Employee ON DELETE CASCADE ON UPDATE CASCADE 
+);
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50100', 111, 5, 3, 0 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50101', 112, 5, 0, 1 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50102', 113, 5, 1, 0 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50103', 114, 5, 2, 1 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50104', 115, 5, 0, 2 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50105', 211, 4, 1, 1 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50106', 212, 4, 0, 1 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50107', 213, 4, 3, 0 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50108', 214, 4, 0, 3 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50109', 215, 4, 0, 0 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50110', 311, 5, 1, 0 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50111', 312, 5, 1, 1 );
+
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50112', 313, 6, 5, 0 );
+	
+INSERT INTO Responsible_for_Tickect_sales ( Personal_Code, Room_Number, Working_Hours_Responsible, Overtime_Responsible, Delaytime_Responsible )
+VALUES( '50113', 314, 6, 0, 2 );
+	
+
+CREATE TABLE Expert (
+	Personal_Code CHAR ( 5 ),
+	Education VARCHAR ( 20 ),
+	Salary_Expert AS ((((Working_Hours_Expert * 30 ) - Delaytime_Expert ) +  Overtime_Expert ) * 30000 ) ,
+	Working_Hours_Expert INT,
+	Overtime_Expert FLOAT,
+	Delaytime_Expert FLOAT,
+	PRIMARY KEY ( Personal_Code ),
+	FOREIGN KEY ( Personal_Code ) REFERENCES Employee ON DELETE CASCADE ON UPDATE CASCADE 
+);
+INSERT INTO Expert ( Personal_Code, Education, Working_Hours_Expert, Overtime_Expert, Delaytime_Expert )
+VALUES( '30100', 'لیسانس', 5, 1, 1 );
+
+INSERT INTO Expert ( Personal_Code, Education, Working_Hours_Expert, Overtime_Expert, Delaytime_Expert )
+VALUES( '30101', 'لیسانس', 5, 3, 0.5 );
+
+INSERT INTO Expert ( Personal_Code, Education, Working_Hours_Expert, Overtime_Expert, Delaytime_Expert )
+VALUES( '30102', 'لیسانس', 5, 0, 1 );
+
+INSERT INTO Expert ( Personal_Code, Education, Working_Hours_Expert, Overtime_Expert, Delaytime_Expert )
+VALUES( '30103', 'فوق لیسانس', 5, 0, 2 );
+
+INSERT INTO Expert ( Personal_Code, Education, Working_Hours_Expert, Overtime_Expert, Delaytime_Expert )
+VALUES( '30104', 'دکترا', 4, 2, 6 );
+
+INSERT INTO Expert ( Personal_Code, Education, Working_Hours_Expert, Overtime_Expert, Delaytime_Expert )
+VALUES( '30105', 'فوق لیسانس', 4, 1, 0 );
+
+INSERT INTO Expert ( Personal_Code, Education, Working_Hours_Expert, Overtime_Expert, Delaytime_Expert )
+VALUES( '30106', 'لیسانس', 6, 5, 0 );
+
+INSERT INTO Expert ( Personal_Code, Education, Working_Hours_Expert, Overtime_Expert, Delaytime_Expert )
+VALUES( '30107', 'فوق لیسانس', 6, 0, 1 );
+
+INSERT INTO Expert ( Personal_Code, Education, Working_Hours_Expert, Overtime_Expert, Delaytime_Expert )
+VALUES( '30108', 'لیسانس', 6, 0, 0 );
+	
+
+CREATE TABLE Guard (
+	Personal_Code CHAR ( 5 ),
+	Room_Number INT,
+	Work_Shift VARCHAR ( 10 ),
+
+	Salary_Guard AS (((( Working_Hours_Guard * 30 ) - Delaytime_Guard ) + Overtime_Guard ) *10000) ,
+	Working_Hours_Guard INT,	
+	Overtime_Guard FLOAT,
+	Delaytime_Guard FLOAT,
+	PRIMARY KEY ( Personal_Code ),
+	FOREIGN KEY ( Personal_Code ) REFERENCES Employee ON DELETE CASCADE ON UPDATE CASCADE,
+);
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60100', 1100, 'صبح کار',	 10, 0, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60101', 1101, 'صبح کار',	 10, 1, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60102', 1102, 'صبح کار',	 10, 0, 1);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60103', 1103, 'صبح کار',	 10, 0, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60104', 1104, 'شب کار',	 12, 0, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60105', 1105, 'صبح کار',	 12, 0, 2);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60106', 2200, 'صبح کار',	 8, 0, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60107', 2201, 'صبح کار',	 8, 2, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60108', 2202, 'صبح کار',	 8, 0, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60109', 2203, 'صبح کار',	 8, 0, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60110', 2204, 'شب کار',	 12, 0, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60111', 2205, 'صبح کار',	 12, 0, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60112', 3300, 'صبح کار',	 12, 0, 5);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60113', 3301, 'شب کار',	 12, 5, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60114', 3302, 'صبح کار',	 11, 0, 2);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60115', 3303, 'صبح کار',	 11, 2, 0);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60116', 3304, 'صبح کار',	 11, 0, 1);
+
+INSERT INTO Guard ( Personal_Code, Room_Number, Work_Shift, Working_Hours_Guard,	Overtime_Guard, Delaytime_Guard )
+VALUES( '60117', 3305, 'صبح کار',	 11, 1, 0);
+
+
+CREATE TABLE Managing_Director (
+	Personal_Code CHAR ( 5 ),
+	Education VARCHAR ( 20 ),
+	Salary_Managing_Director AS ((( Working_Hours_Managing_Director * 30 ) - Delaytime_Managing_Director ) *50000) ,
+	Working_Hours_Managing_Director INT,
+	Delaytime_Managing_Director FLOAT,
+	PRIMARY KEY ( Personal_Code ),
+	FOREIGN KEY ( Personal_Code ) REFERENCES Employee ON DELETE CASCADE ON UPDATE CASCADE,
+	
+);
+INSERT INTO Managing_Director ( Education, Personal_Code, Working_Hours_Managing_Director, Delaytime_Managing_Director )
+VALUES( 'دکترا', '20150', 10, 0 );
+
+INSERT INTO Managing_Director ( Education, Personal_Code, Working_Hours_Managing_Director, Delaytime_Managing_Director )
+VALUES( 'فوق لیسانس', '20170', 11, 0 );
+
+INSERT INTO Managing_Director ( Education, Personal_Code, Working_Hours_Managing_Director, Delaytime_Managing_Director )
+VALUES( 'دکترا', '20160', 8, 0 );
+
+
+CREATE TABLE Visitor (
+	Visitor_Code CHAR ( 5 ) NOT NULL,
+	Date_Ticket NVARCHAR(10),
+	Sex VARCHAR ( 3 ),
+	Number_Branch INT NOT NULL,
+	PRIMARY KEY ( Visitor_Code ),
+FOREIGN KEY ( Number_Branch ) REFERENCES Museum ON DELETE CASCADE ON UPDATE CASCADE 
+);
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '900', '2020/08/25', 'زن', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '901', '2020/08/25', 'مرد', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '902', '2020/08/25', 'زن', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '903', '2020/08/25', 'مرد', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '904', '2020/08/25', 'مرد', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '905', '2020/08/25', 'زن', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '906', '2020/08/25', 'مرد', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '907', '2020/08/25', 'مرد', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '908', '2020/08/25', 'مرد', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '909', '2020/08/25', 'زن', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '910', '2020/08/25', 'زن', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '911', '2020/08/25', 'زن', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '912', '2020/08/25', 'زن', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '913', '2020/08/25', 'مرد', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '914', '2020/08/25', 'مرد', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '915', '2020/08/26', 'مرد', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '916', '2020/08/26', 'زن', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '917', '2020/08/26', 'مرد', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '918', '2020/08/26', 'زن', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '919', '2020/08/26', 'زن', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '920', '2020/08/26', 'مرد', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '921', '2020/08/26', 'مرد', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '922', '2020/08/26', 'مرد', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '923', '2020/08/26', 'زن', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '924', '2020/08/26', 'مرد', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '925', '2020/08/26', 'زن', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '926', '2020/08/26', 'زن', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '927', '2020/08/26', 'مرد', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '928', '2020/08/26', 'مرد', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '929', '2020/08/26', 'زن', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '930', '2019/12/31', 'مرد', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '931', '2019/12/31', 'مرد', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '932', '2019/12/31', 'زن', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '933', '2019/12/31', 'زن', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '934', '2019/12/31', 'مرد', 1 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '935', '2019/12/31', 'مرد', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '936', '2019/12/31', 'زن', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '937', '2019/12/31', 'زن', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '938', '2019/12/31', 'زن', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '939', '2019/12/31', 'مرد', 3 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '940', '2019/12/31', 'مرد', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '941', '2019/12/31', 'مرد', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '942', '2019/12/31', 'زن', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '943', '2019/12/31', 'زن', 2 );
+
+INSERT INTO Visitor ( Visitor_Code, Date_Ticket, Sex, Number_Branch )
+VALUES( '944', '2019/12/31', 'مرد', 2 );
+
+
+CREATE TABLE Ticket (
+	Ticket_Code CHAR ( 5 ),
+	Cost INT,
+	Ticket_Time NVARCHAR(22),
+	Visitor_Code CHAR ( 5 ) NOT NULL,
+	Personal_Code CHAR ( 5 ),
+	PRIMARY KEY ( Ticket_Code ),
+	FOREIGN KEY ( Visitor_Code ) REFERENCES Visitor ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY ( Personal_Code ) REFERENCES Responsible_for_Tickect_sales ON DELETE CASCADE ON UPDATE CASCADE 
+);
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7050', 10000, '2020/08/25 10:01:00', '900', '50100' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7051', 10000, '2020/08/25 11:30:10', '901', '50101' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7052', 10000,'2020/08/25 11:40:38', '902', '50102' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7053', 10000,'2020/08/25 10:00:20', '903', '50103' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7054', 10000,'2020/08/25 16:05:00', '904', '50104' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7055', 8000, '2020/08/25 14:20:18', '905', '50105' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7056', 8000, '2020/08/25 13:00:00', '906', '50106' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7057', 8000, '2020/08/25 13:30:55', '907', '50107' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7058', 8000, '2020/08/25 10:00:00', '908', '50108' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7059', 8000, '2020/08/25 08:59:20', '908', '50109' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7060', 9000, '2020/08/25 19:02:09', '910', '50110' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7061', 9000, '2020/08/25 17:50:36', '911', '50111' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7062', 9000, '2020/08/25 10:01:00', '912', '50112' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7063', 9000, '2020/08/25 16:40:54', '913', '50113' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7064', 9000, '2020/08/25 09:23:06', '914', '50112' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7065', 10000,'2020/08/26 09:02:00', '915', '50100' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7066', 10000,'2020/08/26 10:07:59', '916', '50101' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7067', 10000,'2020/08/26 12:55:18', '917', '50102' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7068', 10000,'2020/08/26 15:36:21', '918', '50103' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7069', 10000,'2020/08/26 06:00:00', '919', '50104' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7070', 8000, '2020/08/26 15:24:04', '920', '50105' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7071', 8000, '2020/08/26 08:51:30', '921', '50106' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7073', 8000, '2020/08/26 11:10:03', '922', '50107' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7074', 8000, '2020/08/26 10:06:06', '923', '50108' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7075', 8000, '2020/08/26 12:50:55', '924', '50109' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7076', 9000, '2020/08/26 11:21:09', '925', '50110' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7077', 9000, '2020/08/26 08:40:00', '926', '50111' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7078', 9000, '2020/08/26 09:57:12', '927', '50112' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7079', 9000, '2020/08/26 13:45:24' , '928', '50113' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7080', 9000, '2020/08/26 17:00:00', '929', '50111' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7081', 10000,'2019/12/31 09:06:23', '930', '50100' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7082', 10000,'2019/12/31 17:30:43', '931', '50101' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7083', 10000,'2019/12/31 13:25:39', '932', '50102' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7084', 10000,'2019/12/31 13:25:39', '933', '50103' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7085', 10000,'2019/12/31 16:47:37', '934', '50104' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7086', 8000,'2019/12/31 19:29:02', '935', '50105' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7087', 8000,'2019/12/31 20:34:37', '936', '50106' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7088', 8000,'2019/12/31 14:01:03', '937', '50107' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7089', 8000,'2019/12/31 12:14:55', '938', '50108' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7090', 8000,'2019/12/31 10:25:39', '939', '50109' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7091', 9000,'2019/12/31 09:30:31', '940', '50110' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7092', 9000,'2019/12/31 13:25:39', '941', '50111' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7093', 9000,'2019/12/31 18:09:46', '942', '50112' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7094', 9000,'2019/12/31 17:25:39', '943', '50113' );
+
+INSERT INTO Ticket ( Ticket_Code, Cost, Ticket_Time, Visitor_Code, Personal_Code )
+VALUES( '7095', 9000,'2019/12/31 16:38:59', '944', '50113' );
+
+
+CREATE TABLE Relatives (
+	Relative_FName VARCHAR ( 20 ),
+	Relative_LName VARCHAR ( 20 ),
+	Relation VARCHAR ( 20 ),
+	Sex VARCHAR ( 3 ),
+	Birth_Date NVARCHAR(10),
+	Personal_Code CHAR ( 5 ) NOT NULL,
+	PRIMARY KEY ( Relative_FName, Relative_LName,Personal_Code),
+	FOREIGN KEY ( Personal_Code ) REFERENCES Employee ON DELETE CASCADE ON UPDATE CASCADE 
+);
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'زهرا', 'مراد خانی', 'همسر', 'زن', '1973/07/27', '20150' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'مریم', 'مراد خانی', 'فرزند', 'زن', '1935/11/05', '20150' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'رضا', 'زکی زاده', 'همسر', 'مرد', '1942/03/04', '30100' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سعید', 'بابایی', 'همسر', 'مرد', '1983/06/24', '30101' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'صدف', 'بابایی', 'فرزند', 'زن', '1933/07/04', '30101' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'زهره', 'مقدم', 'همسر', 'زن', '1947/10/06', '30102' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سحر', 'انصاری', 'همسر', 'زن', '1939/01/03', '30103' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'پرهام', 'راد', 'فرزند', 'مرد', '1941/06/03', '30103' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'نیما', 'کریمی', 'همسر', 'مرد', '1949/02/02', '40100' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'ماهرخ', 'کریمی', 'فرزند', 'زن', '1935/07/05', '40100' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'بهرام', 'رنجی', 'پدر', 'مرد', '1959/06/27', '40101' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'زهرا', 'یوسفی', 'مادر', 'زن', '1963/08/29', '40101' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'ماه منیر', 'ایلانلو', 'همسر', 'زن', '1951/12/05', '40102' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'نیلوفر', 'شفیعی', 'فرزند', 'زن', '1999/10/27', '40102' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'نازنین زهرا', 'شفیعی', 'فرزند', 'زن', '1933/07/04', '40102' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سیما', 'سهرابی', 'همسر', 'زن', '1944/11/04', '40103' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'علی', 'ذوالقدر', 'همسر', 'مرد', '1936/12/04', '40104' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'بنیامین', 'زاهدی', 'همسر', 'مرد', '1940/01/04', '50100' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'عطیه', 'فکری', 'همسر', 'زن', '2017/12/02', '50101' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'محمد', 'رجبی', 'همسر', 'مرد', '1973/03/27', '50102' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'زهرا', 'رجبی', 'فرزند', 'زن', '2013/05/23', '50102' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'زینب', 'رجبی', 'فرزند', 'زن', '1941/05/03', '50102' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'محسن', 'بختیاری', 'همسر', 'مرد', '1970/01/23', '50103' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'پوریا', 'بختیاری', 'فرزند', 'مرد', '1996/06/23', '50103' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'عبدالله', 'نظرگل', 'پدر', 'مرد', '1964/12/30', '50104' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سمیه', 'نظری', 'مادر', 'زن', '1971/02/23', '50104' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'پروین', 'نوری', 'همسر', 'زن', '1940/04/02', '60100' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'متینه', 'علیپور', 'همسر', 'زن', '1996/07/26', '60101' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'آوین', 'نعمتی', 'همسر', 'زن', '1939/06/04', '60102' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'بهراد', 'مرادی', 'فرزند', 'مرد', '1942/10/05', '60102' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سوین', 'زاهدی', 'همسر', 'زن', '1951/04/03', '60103' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'ثریا', 'ایزدی', 'همسر', 'زن', '1952/07/04', '60104' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'ارغوان', 'مهرابی', 'همسر', 'زن', '1937/11/04', '60105' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'یاسین', 'نائینی', 'فرزند', 'مرد', '1938/05/03', '60105' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'صفورا', 'مقدمی', 'همسر', 'زن', '1980/02/23', '20160' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'پژمان', 'ادیب زاده', 'فرزند', 'مرد', '1941/10/05', '20160' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'پریا', 'ادیب زاده', 'فرزند', 'زن', '1947/01/03', '20160' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'علیرضا', 'براتی', 'همسر', 'مرد', '1932/11/04', '30104' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'مهدی', 'براتی', 'فرزند', 'مرد', '1937/03/04', '30104' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'محمد', 'براتی', 'فرزند', 'مرد', '1939/05/04', '30104' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'نسرین', 'داوودی', 'همسر', 'زن', '1991/12/27', '30105' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'فرهاد', 'فراهانی', 'همسر', 'مرد', '1972/08/28', '40105' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'مریم', 'فراهانی', 'فرزند', 'زن', '1942/12/04', '40105' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'ثمین', 'مرتضوی', 'همسر', 'زن', '1940/07/04', '40106' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'احسان', 'حسنی', 'همسر', 'مرد', '1952/01/04', '40107' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'یسنا', 'صفری', 'همسر', 'زن', '1934/01/03', '40108' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'رضا', 'شعبانی', 'همسر', 'مرد', '1934/08/04', '50105' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'زهره', 'فیروزی', 'همسر', 'زن', '1998/02/25', '50106' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'حمید', 'جلیلی', 'همسر', 'مرد', '1938/12/04', '50107' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'حامد', 'جلیلی', 'فرزند', 'مرد', '2011/09/29', '50107' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'داوود', 'احدی', 'پدر', 'مرد', '1941/01/03', '50108' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'دلارام', 'تینایی', 'مادر', 'زن', '1943/02/02', '50108' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'جمشید', 'صادق زاده', 'پدر', 'مرد', '1941/01/03', '50109' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'الناز', 'پاشایی', 'مادر', 'زن', '1943/02/02', '50109' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'جواد', 'محمدی', 'پدر', 'مرد', '1931/11/05', '60106' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'زیبا', 'بخشی', 'مادر', 'زن', '1971/07/28', '60106' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'شکوه', 'فاطمی', 'همسر', 'زن', '1942/07/04', '60107' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'مبینا', 'فتاحی', 'همسر', 'زن', '1999/10/27', '60108' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'آیدا', 'روشن', 'همسر', 'زن', '1995/8/26', '60109' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سعیده', 'سعدی', 'همسر', 'زن', '1979/06/24', '60110' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'حمیده', 'حیدری', 'فرزند' ,'زن', '1937/01/03', '60110' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'حانیه', 'مطهری', 'همسر', 'زن', '1951/12/05', '60111' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سهیلا', 'حجتی', 'همسر', 'زن', '1940/05/03', '20170' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'کوثر', 'مقدم', 'همسر', 'زن', '1947/10/06', '30106' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'احمد', 'معصومی', 'همسر', 'مرد', '1988/12/30', '30107' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'پرویز', 'راشدی', 'همسر', 'مرد', '1942/03/04', '30108' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'بیژن', 'بیژنی', 'همسر', 'مرد', '1952/09/04', '40109' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'بهرام', 'بهروزی', 'همسر', 'مرد', '1945/11/04', '40110' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'منیره', 'هاشمی', 'همسر', 'زن', '1993/03/21', '40111' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'یاسمن', 'سالاری', 'همسر', 'زن', '1978/02/21', '40112' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'یاسمین', 'شهبازی', 'فرزند', 'زن', '1935/07/05', '40112' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سارا', 'شهبازی', 'فرزند', 'زن', '1936/07/04', '40112' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'میترا', 'ادبی', 'همسر', 'زن', '1976/07/28', '50110' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'امیرحسین', 'نکویی', 'فرزند', 'مرد', '1941/11/04', '50110' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'حسین', 'توکل', 'همسر', 'مرد', '1979/06/30', '50111' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'مهین', 'براتی', 'همسر', 'زن', '1932/11/04', '50112' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'نادیا', 'نصیری', 'فرزند', 'زن', '2008/11/27', '50112' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سهیل', 'قنقره', 'همسر', 'مرد', '1940/03/04', '50113' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'مسعود', 'قنقره', 'فرزند', 'مرد', '1952/07/04', '50113' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'یگانه', 'شریف', 'همسر', 'زن', '1964/01/25', '60112' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سحر', 'آذری', 'همسر', 'زن', '1935/05/04', '60113' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'نفس', 'مجیدی', 'همسر', 'زن', '1971/10/28', '60114' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'نیما', 'ذولفقاری', 'فرزند', 'مرد', '1951/10/06', '60114' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سمیه', 'آزادی', 'همسر', 'زن', '1933/01/03', '60115' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'ثریا', 'مومنی', 'همسر', 'زن', '1941/07/04', '60116' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'معصوم', 'کشاورز', 'همسر', 'زن', '1984/09/26', '60117' );
+
+INSERT INTO Relatives ( Relative_FName, Relative_LName, Relation, Sex, Birth_Date, Personal_Code )
+VALUES( 'سارا', 'امامی', 'فرزند', 'زن', '1933/07/04', '60117' );
+	
+
+CREATE TABLE Work_Of_Art (
+	WorkOfArt_Code CHAR ( 5 ),
+	Name_WorkOfArt VARCHAR ( 50 ),
+	Creater_FName VARCHAR ( 20 ),
+	Creater_LName VARCHAR ( 20 ),
+	Creation_Time VARCHAR ( 6 ),
+	Country VARCHAR ( 20 ),
+	Number_Branch INT NOT NULL,
+	PRIMARY KEY ( WorkOfArt_Code ) ,
+	FOREIGN KEY ( Number_Branch ) REFERENCES Museum ON DELETE CASCADE ON UPDATE CASCADE 
+);
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10225', 'مونالیزا', 'لئوناردو', 'داوینچی', 'قرن11', 'ایتالیا', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10226', 'جیغ ', 'ادوارد', 'مونک', '1966', 'اسلو', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10227', 'شب پرستاره', 'وینسنت', 'ون گوک', '1976', 'نیویورک', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10228', 'گشت شبانه ', 'رامبرانت', 'وان رین', '1985', 'آمستردام', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10229', 'گل‌های آفتابگردان ', 'وینسنت', 'ون گوک ', ' 1898 ', 'لندن', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10230', 'آخرین شام ', 'لئونارئو', 'داوینچی', ' 2003 ', 'رم', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10231', 'گالری علوفه ', 'جان', 'کنستابل', ' 2000 ', 'لندن', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10232', 'تمررجنگجوبه آخرین ', 'رامبرانت', 'وان رین ', ' 1922 ', 'لندن', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10233', 'موج نهم ', 'ایوان', 'آیوازوفسک ', ' 1940 ', 'سن پترزبورگ ', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10234', 'دختری با گوشواره مروارید ', 'یوهانس', 'ورمیر ', ' 1890 ', 'مائریتشویسِ لاهه ', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10235', 'برج بابل ', 'پیتر', 'بروگل مهتر ', ' 1894 ', 'وین', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10236', 'خوک چران بریتانی ', 'پل', 'گوکن ', ' 1854 ', 'لس آنجلس ', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '10237', 'دو خواهر (روی تراس ) ', 'پیر', 'آگوست رنوآر ', ' 1785 ', 'شیکاگو ', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11335', 'گیتار ', 'پابلو', 'پیکاسو ', ' 1312 ', 'ایران', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11336', 'آتش بازی شیشه ', 'دیل', 'چیهونی', ' 1955 ', 'ایالات متحده آمریکا ', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11337', 'نیروی طبیعت ', 'لورنزو', 'کویین ', ' 1999 ', 'قطر', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11338', 'پیتا', 'میکل', 'آنژ ', ' 1965 ', 'شهر واتیکان ', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11339', 'سگ و ماه ', 'تونی', 'اسمیت ', ' 1975 ', 'ایالات متحده آمریکا ', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11340', 'نیم تنه سورئال ', 'تونی', 'اسمیت ', ' 1999 ', 'ایالات متحده آمریکا ', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11341', 'علی و نینو ', 'تامارا', 'کوستیتادزه ', ' 1986 ', 'جورجیا', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11342', 'اسبهای توانای ارابه ', 'راجا', 'نارشیقا دوا ', ' 1355 ', 'ادیشا', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11343', 'ستون آشوکا ', 'امپراطور', 'آشوکا ', 'قرن 7 ', 'سارنات', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11344', 'پری دریایی ورشو ', 'کنستانتی', 'هگل ', ' 1876 ', 'ورشو', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11345', 'احساس غرق شدن ', 'دیوید', 'کریستوفر وایت ', ' 1928 ', 'پکن', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11346', 'دیوید', 'میکل', 'آنژ ', ' 1654 ', 'فلورانس ، ایتالیا ', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '11347', 'مجسمه های صابون ', 'نارونگ', 'نوپارمات ', ' 1999 ', 'تایلند ', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12445', 'خوشنويسى يوسف و زليخا ', 'کيخسرو', 'خروش ', ' 1245 ', 'ایران', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12446', 'رها', 'عباس', 'اخوین ', ' 1233 ', 'ایران', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12447', 'جان جانان ', 'جليل', 'رسولى ', ' 1324 ', 'ایران', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12448', 'نقش شوق ', 'یدالله', 'کابلی ', ' 1384 ', 'ایران', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12449', 'خیال', 'بلال', 'جوان ', ' 1345 ', 'ایران', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12450', 'گنجينه ی معرفت ', 'عباس', 'اخوین ', ' 1377 ', 'ایران', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12451', 'يادگار عشق ', 'جليل', 'رسولى ', ' 1387 ', 'ایران', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12452', 'چهار فصل ', 'فتحعلى', 'واشقانى فراهانى ', ' 1366 ', 'ایران', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12453', 'طلعت حق ', 'غلامحسين', 'اميرخانى ', ' 1222 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12454', 'خطاطی سفرنامه ناصرخسرو ', 'سید محمد ', 'احصایی ', ' 1289 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12455', 'خطاطی ديوان حافظ ', 'محمد', 'سلحشور ', ' 1332 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12456', 'خوشنویسی آیینه ادراکر ', 'يدالله', 'کابلى خوانسارى ', ' 1354 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12457', ',خطاطی دوبيتى‌هاى باباطاهر ', 'میر علی ', 'تبریز', ' 1342 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12458', 'دولت قرآن ', 'یدالله', 'کابلی ', ' 1299 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12459', 'دولت قرآن ', 'یدالله', 'کابلی ', ' 1310 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '12460', 'نگارش گلچینی ازنهج‌ البلاغه ', 'محمد', 'سلحشور', ' 1258 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13555', 'مکشوفه', 'یدالله', 'یزدی', ' 1367 ', 'ایران', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13556', 'سفال مفتوش ', 'محمد', 'احصایی ', 'قرن 13 ', 'ایران', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13557', 'جام ادیب ', 'ایمان', 'ناصری ', ' 1314 ', 'ایران', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13558', 'گلاب پاش ', 'تیمور', 'گودکانی ', ' 1354 ', 'ایران', 1 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13559', 'گلدان شقایق ', 'امیرعلی', 'کایلی ', ' 1388 ', 'ایران', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13560', 'بشقاب شیخ ', 'معین', 'نصر ', ' 1367 ', 'ایران', 2 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13561', 'فنجان های سلطنتی ', 'رسول', 'جلیجی ', ' 1243 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13562', 'نقش گل ', 'علی', 'یزدی ', ' 1267 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13563', 'سفال تیره ', 'فتحعلى', 'واشقانى', ' 1316 ', 'ایران', 3 );
+
+INSERT INTO Work_Of_Art ( WorkOfArt_Code, Name_WorkOfArt, Creater_FName, Creater_LName, Creation_Time, Country, Number_Branch )
+VALUES( '13564', 'صندوق جواهرات ', 'محسن', 'اميری ', ' 1323 ', 'ایران', 3 );
+
+	
+CREATE TABLE Sculpture (
+	WorkOfArt_Code CHAR ( 5 ),
+	Gender VARCHAR ( 30 ),
+	PRIMARY KEY ( WorkOfArt_Code ),
+	FOREIGN KEY ( WorkOfArt_Code ) REFERENCES Work_Of_Art ON DELETE CASCADE ON UPDATE CASCADE 
+);
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11335', ' کاغذ' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11336', ' شیشه' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11337', ' برنز' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11338', ' سنگ مرمر' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11339', ' آلومینیوم' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11340', 'آلومینیوم' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11341', ' فولاد' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11342', ' سنگ' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11343', 'سنگ' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11344', ' روی برنز' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11345', 'سرامیک' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11346', ' سنگ' );
+
+INSERT INTO Sculpture ( WorkOfArt_Code, Gender )
+VALUES( '11347', 'صابون' );
+
+
+CREATE TABLE Painting (
+	WorkOfArt_Code CHAR ( 5 ),
+	Style VARCHAR ( 30 ),
+	PRIMARY KEY ( WorkOfArt_Code ),
+	FOREIGN KEY ( WorkOfArt_Code ) REFERENCES Work_Of_Art ON DELETE CASCADE ON UPDATE CASCADE 
+);
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10225', ' رئالیسم' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10226', 'امپرسیونیسم' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10227', 'پست امپرسیونیسم' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10228', 'نودریافتگری' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10229', 'نئو امپرسیونیسم' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10230', 'فوتوریسم' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10231', 'ورتیسیسم' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10232', 'واقع گرایی ' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10233 ', 'اکسپرسیونیسم' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10234 ', 'اکسپرسیونیسم انتزاعی ' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10235 ', 'کوبیسم ' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10236 ', 'برداشت گرایی ' );
+
+INSERT INTO Painting ( WorkOfArt_Code, Style )
+VALUES( '10237 ', 'فرا واقع‌گرایی ' );
+	
+	
+CREATE TABLE Lineboard (
+	WorkOfArt_Code CHAR ( 5 ),
+	Style VARCHAR ( 30 ),
+	PRIMARY KEY ( WorkOfArt_Code ),
+	FOREIGN KEY ( WorkOfArt_Code ) REFERENCES Work_Of_Art ON DELETE CASCADE ON UPDATE CASCADE 
+);
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12445', ' گوتیک' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12446', 'پیوسته نویسی' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12447', 'ایتالیک' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12448', 'تذهیب ایرانی' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12449', 'کاپرپلیت' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12450', 'اسپنسریان' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12451', 'براش کالیگرافی' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12452', 'کاپرپلیت' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12453', 'ایتالیک' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12454', 'براش کالیگرافی' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12455', 'کلاسیک' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12456', 'دکوراتیو' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12457', 'نستعلیق' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12458', ' تذهیب ایران' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12459', ' گوتیک' );
+
+INSERT INTO Lineboard ( WorkOfArt_Code, Style )
+VALUES( '12460', 'اکسپرسیونیسم' );
+	
+
+CREATE TABLE Other (
+	WorkOfArt_Code CHAR ( 5 ),
+	Type_Other VARCHAR ( 50 ),
+	PRIMARY KEY ( WorkOfArt_Code ),
+	FOREIGN KEY ( WorkOfArt_Code ) REFERENCES Work_Of_Art ON DELETE CASCADE ON UPDATE CASCADE 
+);
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13555', 'هنرهای تجاری' );
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13556', 'هنرهای جزئی' );
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13557', 'هنرهای تجاری' );
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13558', 'هنر ذهنی' );
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13559', 'هنرهای تزئینی' );
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13560', 'هنرهای جزئی' );
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13561', 'هنرهای تزئینی' );
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13562', 'هنر ذهنی' );
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13563', 'هنر انتزاعی' );
+
+INSERT INTO Other ( WorkOfArt_Code, Type_Other )
+VALUES( '13564', 'هنر ذهنی' );
+
+
+CREATE TABLE Technical_Protection (
+	WorkOfArt_Code CHAR ( 5 ),
+	Personal_Code CHAR ( 5 ),
+	PRIMARY KEY ( WorkOfArt_Code, Personal_Code ),
+	FOREIGN KEY ( WorkOfArt_Code ) REFERENCES Work_Of_Art ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY ( Personal_Code ) REFERENCES Expert ON DELETE CASCADE ON UPDATE CASCADE
+);
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10225', '30100' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10226', '30101' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10227', '30102' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10228', '30103' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10233', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10234', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10229', '30106' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10230', '30107' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10231', '30108' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11335', '30100' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11336', '30101' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11337', '30102' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11338', '30103' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10235', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10236', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10232', '30106' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11339', '30107' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11340', '30108' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12445', '30100' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12446', '30101' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12447', '30102' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '13555', '30103' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '10237', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11343', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11341', '30106' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11342', '30107' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12448', '30108' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '13556', '30100' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '13557', '30101' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '13558', '30102' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11344', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11345', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12449', '30106' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12450', '30107' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12451', '30108' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12452', '30106' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11346', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '11347', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '13559', '30106' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '13560', '30107' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12453', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12454', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12455', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12456', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12457', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12458', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12459', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12460', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12456', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12457', '30105' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12458', '30104' );
+
+INSERT INTO Technical_Protection ( WorkOfArt_Code, Personal_Code )
+VALUES( '12459', '30105' );
+
+
+CREATE TABLE Tips (
+	Visitor_Code CHAR ( 5 ),
+	Personal_Code CHAR ( 5 ),
+	PRIMARY KEY ( Personal_Code, Visitor_Code ),
+	FOREIGN KEY ( Visitor_Code ) REFERENCES Visitor ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY ( Personal_Code ) REFERENCES Guide ON DELETE CASCADE ON UPDATE CASCADE 
+);
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '900', '40100' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '901', '40101' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '902', '40102' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '903', '40103' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '904', '40104' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '905', '40105' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '906', '40106' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '907', '40107' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '908', '40108' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '908', '40109' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '910', '40110' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '911', '40111' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '912', '40112' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '913', '40100' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '914', '40101' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '915', '40102' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '916', '40103' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '917', '40104' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '918', '40105' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '919', '40106' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '920', '40107' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '921', '40108' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '922', '40109' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '923', '40110' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '924', '40111' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '925', '40112' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '926', '40100' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '927', '40101' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '928', '40102' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '929', '40103' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '930', '40104' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '931', '40105' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '932', '40106' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '933', '40107' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '934', '40108' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '935', '40109' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '936', '40110' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '937', '40111' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '938', '40112' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '939', '40100' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '940', '40101' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '941', '40102' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '942', '40103' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '943', '40104' );
+
+INSERT INTO Tips ( Visitor_Code, Personal_Code )
+VALUES( '944', '40105' );
